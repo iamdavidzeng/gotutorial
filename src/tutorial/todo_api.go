@@ -25,17 +25,13 @@ type (
 	}
 )
 
-func init() {
-	var err error
-	db, err := gorm.Open("mysql", "root:@tcp(127.0.0.1:3306)/demo")
-	if err != nil {
-		panic("failed to connect database")
-	}
-
-	db.AutoMigrate(&todoModel{})
-}
-
 func main() {
+
+	db, err := gorm.Open("mysql", "root:@/demo")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer db.Close()
 
 	router := gin.Default()
 
