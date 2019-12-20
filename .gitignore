@@ -13,12 +13,3 @@
 
 .vscode/
 .idea/
-bin/
-pkg/
-src/github.com
-src/golang.org
-
-s4ettings.json
-src/gopkg.in
-
-src/tara
