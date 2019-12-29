@@ -15,8 +15,7 @@ func addDigits(num int) int {
 	}
 }
 
-
 func main() {
-	res:= addDigits(38)
+	res := addDigits(38)
 	fmt.Println(res)
 }
