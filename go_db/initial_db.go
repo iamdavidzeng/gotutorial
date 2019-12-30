@@ -1,12 +1,12 @@
-package main
+package go_db
 
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql" //hahah
 )
 
-func main() {
+func DBTest() {
 	fmt.Println("Go MySQL Tutorial")
 
 	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/users")

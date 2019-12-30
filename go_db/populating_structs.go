@@ -1,4 +1,4 @@
-package main
+package go_db
 
 import (
 	"database/sql"
@@ -11,7 +11,7 @@ type Tag struct {
 	Email string `json: "email"`
 }
 
-func main() {
+func SimpleStructure() {
 
 	fmt.Println("Go MYSQL Tutorial")
 
