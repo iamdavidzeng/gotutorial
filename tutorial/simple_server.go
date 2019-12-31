@@ -22,8 +22,7 @@ func incrementCounter(w http.ResponseWriter, r *http.Request) {
 	mutex.Unlock()
 }
 
-
-func main()  {
+func main() {
 
 	http.HandleFunc("/", echoString)
 
