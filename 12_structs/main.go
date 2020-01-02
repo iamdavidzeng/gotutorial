@@ -23,6 +23,12 @@ func (p *Person) hasBirthday() {
 	p.age++
 }
 
+func pointerReceiver(p *Person) {
+	fmt.Println(p, p.firstName)
+	fmt.Printf("pointer Receiver type: %T\n", p)
+	fmt.Printf("pointer Receiver address: %p", p)
+}
+
 func main() {
 	person1 := Person{
 		firstName: "David",
@@ -39,4 +45,16 @@ func main() {
 
 	person1.hasBirthday()
 	fmt.Println(person1.greet())
+
+	person2 := &Person{
+		firstName: "Tom",
+		lastName:  "Smith",
+		city:      "Boston",
+		gender:    "male",
+		age:       30,
+	}
+
+	fmt.Println("person2 use attribute directly: " + person2.firstName)
+	fmt.Printf("person2 memory address is: %p\n", person2)
+	pointerReceiver(person2)
 }
