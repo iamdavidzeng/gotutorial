@@ -26,7 +26,7 @@ func (p *Person) hasBirthday() {
 func pointerReceiver(p *Person) {
 	fmt.Println(p, p.firstName)
 	fmt.Printf("pointer Receiver type: %T\n", p)
-	fmt.Printf("pointer Receiver address: %p", p)
+	fmt.Printf("pointer Receiver address: %p\n", p)
 }
 
 func main() {
@@ -55,6 +55,7 @@ func main() {
 	}
 
 	fmt.Println("person2 use attribute directly: " + person2.firstName)
+	fmt.Printf("person2's typeL %T\n", person2)
 	fmt.Printf("person2 memory address is: %p\n", person2)
 	pointerReceiver(person2)
 }
