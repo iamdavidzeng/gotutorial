@@ -1,11 +1,11 @@
-package main
+package utils
 
-func twoSum(nums []int, target int) []int {
+func TwoSum(nums []int, target int) []int {
 	res := make([]int, 2)
 	for key, value := range nums {
 		res[0] = key
-		v := target - value 
-		
+		v := target - value
+
 		for i := key + 1; i < len(nums); i++ {
 			if nums[i] == v {
 				res[1] = i
@@ -16,7 +16,7 @@ func twoSum(nums []int, target int) []int {
 	return nil
 }
 
-func twoSum1(nums []int, target int) []int {
+func TwoSum1(nums []int, target int) []int {
 	tmp := make(map[int]int)
 	res := make([]int, 2)
 

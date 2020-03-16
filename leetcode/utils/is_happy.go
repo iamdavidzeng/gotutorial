@@ -1,10 +1,7 @@
-package main
+package utils
 
-import "fmt"
-
-
-func isHappy(n int) bool {
-	history := make(map[int] bool)
+func IsHappy(n int) bool {
+	history := make(map[int]bool)
 
 	for n != 1 {
 		if _, ok := history[n]; ok {
@@ -17,13 +14,8 @@ func isHappy(n int) bool {
 			sumValue += (n % 10) * (n % 10)
 			n /= 10
 		}
-		
+
 		n = sumValue
 	}
 	return true
-}
-
-
-func main() {
-	fmt.Println(isHappy(19))
 }
