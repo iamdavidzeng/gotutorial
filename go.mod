@@ -11,6 +11,7 @@ require (
 	github.com/google/go-cmp v0.4.0 // indirect
 	github.com/jinzhu/gorm v1.9.12
 	github.com/pkg/errors v0.8.1 // indirect
+	github.com/stripe/stripe-go v70.5.0+incompatible
 	github.com/tidwall/pretty v1.0.0 // indirect
 	github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c // indirect
 	github.com/xdg/stringprep v1.0.0 // indirect
