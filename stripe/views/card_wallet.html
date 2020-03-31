@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stripe CardWallet</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <input id="cardholder-name" type="text">
+    <!-- placeholder for Elements -->
+    <div id="card-element"></div>
+    <button id="card-button" data-secret="{{ .ClientSecret }}">
+      Save Card
+    </button>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+    var stripe = Stripe(process.env.STRIPE_PUBLISH_KEY);
+
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    var cardholderName = document.getElementById('cardholder-name');
+    var cardButton = document.getElementById('card-button');
+    var clientSecret = cardButton.dataset.secret; 
+
+    cardButton.addEventListener('click', function(ev) {
+
+      console.log(clientSecret);
+
+      stripe.confirmCardSetup(
+        clientSecret,
+        {
+          payment_method: {
+            card: cardElement,
+            billing_details: {
+              name: cardholderName.value,
+            },
+          },
+        }
+      ).then(function(result) {
+          if (result.error) {
+            // Display error.message in your UI.
+            console.log(result.error);
+          } else {
+            // The setup has succeeded. Display a success message.
+            console.log(result);
+          }
+      });
+    });
+    </script>
+  </body>
+</html>
