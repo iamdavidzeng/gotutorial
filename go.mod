@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/DataDog/zstd v1.4.4 // indirect
+	github.com/astaxie/beego v1.12.1
 	github.com/gin-gonic/gin v1.5.0
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-stack/stack v1.8.0 // indirect
@@ -11,6 +12,7 @@ require (
 	github.com/google/go-cmp v0.4.0 // indirect
 	github.com/jinzhu/gorm v1.9.12
 	github.com/pkg/errors v0.8.1 // indirect
+	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 	github.com/stripe/stripe-go v70.5.0+incompatible
 	github.com/tidwall/pretty v1.0.0 // indirect
 	github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c // indirect
