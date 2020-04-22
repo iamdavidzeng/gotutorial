@@ -8,22 +8,22 @@ func maxProfit(prices []int) int {
 	profit := 0
 	for i := 0; i < len(prices)-1; i++ {
 		if prices[i] >= prices[i+1] {
+			if min_price_index < max_price_index {
+				profit += prices[max_price_index] - prices[min_price_index]
+			}
 			min_price_index = i + 1
 		} else {
 			max_price_index = i + 1
 		}
 
-		if min_price_index == len(prices)-1 {
-			return 0
-		} else if max_price_index == len(prices)-1 {
-			return prices[max_price_index] - prices[min_price_index]
+		if max_price_index == len(prices)-1 {
+			profit += prices[max_price_index] - prices[min_price_index]
 		}
 	}
-
 	return profit
 }
 
 func main() {
-	prices := []int{1, 2, 3, 4, 5}
+	prices := []int{7, 1, 5, 3, 6, 4}
 	fmt.Println(maxProfit(prices))
 }
