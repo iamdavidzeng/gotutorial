@@ -6,6 +6,7 @@ import (
 )
 
 type Person struct {
+	// Struct describe user
 	firstName string
 	lastName  string
 	city      string
@@ -13,12 +14,12 @@ type Person struct {
 	age       int
 }
 
-// greet with value reciever
+// greet with value receiver
 func (p Person) greet() string {
 	return "Hello, i am " + p.firstName + " " + p.lastName + "living at " + p.city + ", i'm " + strconv.Itoa(p.age)
 }
 
-// change value with pointer reciever
+// change value with pointer receiver
 func (p *Person) hasBirthday() {
 	p.age++
 }
