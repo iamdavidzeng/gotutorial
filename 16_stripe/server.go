@@ -9,10 +9,12 @@ import (
 	"github.com/stripe/stripe-go/setupintent"
 )
 
+// WalletData use to load for html
 type WalletData struct {
 	ClientSecret string
 }
 
+// Customer represent existing user in Stripe Platform
 type Customer struct {
 	ID string
 }
