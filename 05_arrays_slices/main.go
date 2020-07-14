@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
 	// Arrays
@@ -11,12 +14,15 @@ func main() {
 	// fruitArr[1] = "Orange"
 
 	// Declare and assign
-	// fruitArr := [2]string{"Apple", "Orange"}
+	fruitArr1 := [2]string{"Apple", "Orange"}
+	fmt.Println(reflect.TypeOf(fruitArr1))
+	fmt.Println(len(fruitArr1))
+	fmt.Println(fruitArr1)
 
 	// Slices
-	fruitArr := []string{"Apple", "Orange", "Banana", "Cherry"}
-
-	fmt.Println(len(fruitArr))
-	fmt.Println(fruitArr[1:2])
+	fruitArr2 := []string{"Apple", "Orange", "Banana", "Cherry"}
+	fmt.Println(reflect.TypeOf(fruitArr2))
+	fmt.Println(len(fruitArr2))
+	fmt.Println(fruitArr2[:4])
 
 }
