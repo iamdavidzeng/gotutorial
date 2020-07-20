@@ -10,6 +10,7 @@ func main() {
 
 	now := time.Now()
 	p(now)
+	p(now.Unix())
 
 	then := time.Date(
 		2019, 9, 25, 23, 28, 00, 123456789, time.UTC,
