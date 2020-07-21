@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"reflect"
+	"strconv"
 	"time"
 )
 
@@ -10,7 +12,15 @@ func main() {
 
 	now := time.Now()
 	p(now)
-	p(now.Unix())
+
+	timestamp := time.Now().Unix()
+
+	timestampString := strconv.FormatInt(timestamp, 10)
+	fmt.Println(reflect.TypeOf(timestamp))
+
+	fmt.Println(timestampString)
+
+	fmt.Println(reflect.TypeOf(timestampString))
 
 	then := time.Date(
 		2019, 9, 25, 23, 28, 00, 123456789, time.UTC,
