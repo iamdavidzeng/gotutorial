@@ -5,13 +5,19 @@ import (
 	"strconv"
 )
 
+// Person object
 type Person struct {
-	// Struct describe user
 	firstName string
 	lastName  string
 	city      string
 	gender    string
 	age       int
+	address   *Address
+}
+
+// Address 1
+type Address struct {
+	street string
 }
 
 // greet with value receiver
@@ -31,12 +37,16 @@ func pointerReceiver(p *Person) {
 }
 
 func main() {
+	address := &Address{
+		street: "ChangPing Load",
+	}
 	person1 := Person{
 		firstName: "David",
 		lastName:  "Zeng",
 		city:      "Shanghai",
 		gender:    "male",
 		age:       25,
+		address:   address,
 	}
 
 	fmt.Println(person1)

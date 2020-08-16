@@ -15,6 +15,6 @@ func main() {
 	accountID := os.Args[1]
 	a, _ := account.GetByID(accountID, nil)
 
-	response, _ := json.Marshal(a)
-	fmt.Println(string(response))
+	out, _ := json.MarshalIndent(a, "", "  ")
+	fmt.Println(string(out))
 }
