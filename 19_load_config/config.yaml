@@ -1,1 +1,4 @@
 DB_URI: ${DB_USER:root}
+
+DB:
+    URI:  ${DB_SERVER:localhost}

@@ -9,7 +9,10 @@ import (
 )
 
 type DBCfg struct {
-	DBURI string `mapstructure:"DB_URI"`
+	DBURI    string `mapstructure:"DB_URI"`
+	DBServer struct {
+		URI string `mapstructure:"URI"`
+	} `mapstructure:"DB"`
 }
 
 func main() {
@@ -23,6 +26,7 @@ func main() {
 	}
 
 	for _, key := range viper.AllKeys() {
+		fmt.Println(key)
 		value := viper.GetString(key)
 		envOrRaw := replaceEnvInConfig([]byte(value))
 		viper.Set(key, string(envOrRaw))
