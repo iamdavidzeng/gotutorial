@@ -3,27 +3,27 @@ package main
 import "fmt"
 
 func maxProfit(prices []int) int {
-	min_price_index := 0
-	max_price_index := 0
+	minPriceIndex := 0
+	maxPriceIndex := 0
 	profit := 0
 	for i := 0; i < len(prices)-1; i++ {
 		if prices[i] >= prices[i+1] {
-			if min_price_index < max_price_index {
-				profit += prices[max_price_index] - prices[min_price_index]
+			if minPriceIndex < maxPriceIndex {
+				profit += prices[maxPriceIndex] - prices[minPriceIndex]
 			}
-			min_price_index = i + 1
+			minPriceIndex = i + 1
 		} else {
-			max_price_index = i + 1
+			maxPriceIndex = i + 1
 		}
 
-		if max_price_index == len(prices)-1 {
-			profit += prices[max_price_index] - prices[min_price_index]
+		if maxPriceIndex == len(prices)-1 {
+			profit += prices[maxPriceIndex] - prices[minPriceIndex]
 		}
 	}
 	return profit
 }
 
 func main() {
-	prices := []int{7, 1, 5, 3, 6, 4}
+	prices := []int{7, 6, 5, 4, 3, 1, 2}
 	fmt.Println(maxProfit(prices))
 }
