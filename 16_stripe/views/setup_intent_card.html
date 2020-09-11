@@ -22,7 +22,7 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
-    var stripe = Stripe(process.env.STRIPE_PUBLISH_KEY);
+    var stripe = Stripe("{{ .StripePublicKey }}");
 
     var elements = stripe.elements();
     var cardElement = elements.create('card');
