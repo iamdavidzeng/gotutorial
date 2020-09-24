@@ -32,9 +32,12 @@ func main() {
 
 	customer := Customer{ID: customerID}
 
-	// setupIntentServer(customer)
+	setupIntentServer(customer)
 
 	paymentIntentServer(customer)
+
+	fmt.Println("Server listen on localhost:3000")
+	http.ListenAndServe(":3000", nil)
 }
 
 func setupIntentServer(customer Customer) {
@@ -43,6 +46,11 @@ func setupIntentServer(customer Customer) {
 	http.HandleFunc("/setup-intent", func(w http.ResponseWriter, r *http.Request) {
 		params := &stripe.SetupIntentParams{
 			Customer: stripe.String(customer.ID),
+			Params: stripe.Params{
+				Metadata: map[string]string{
+					"name": "iamdavidzeng",
+				},
+			},
 		}
 		intent, err := setupintent.New(params)
 		if err != nil {
@@ -54,8 +62,6 @@ func setupIntentServer(customer Customer) {
 		}
 		cardWalletTmpl.Execute(w, data)
 	})
-
-	http.ListenAndServe(":3000", nil)
 }
 
 func paymentIntentServer(customer Customer) {
@@ -66,6 +72,11 @@ func paymentIntentServer(customer Customer) {
 			Amount:   stripe.Int64(1000),
 			Currency: stripe.String(string(stripe.CurrencyGBP)),
 			Customer: stripe.String(customer.ID),
+			Params: stripe.Params{
+				Metadata: map[string]string{
+					"name": "iamdavidzeng",
+				},
+			},
 		}
 		intent, err := paymentintent.New(params)
 		if err != nil {
@@ -77,6 +88,4 @@ func paymentIntentServer(customer Customer) {
 		}
 		cardWalletTmpl.Execute(w, data)
 	})
-
-	http.ListenAndServe(":3000", nil)
 }

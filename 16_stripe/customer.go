@@ -13,7 +13,15 @@ func main() {
 
 	stripe.Key = os.Getenv("STRIPE_ACCOUNT_SECRET_KEY")
 
-	updateCustomer()
+	getCustomer()
+}
+
+func getCustomer() {
+	customerID := os.Getenv("STRIPE_CUSTOMER_ID")
+
+	c, _ := customer.Get(customerID, nil)
+
+	fmt.Println(utils.MarshalIndent(c))
 }
 
 func createCustomer() {

@@ -12,11 +12,13 @@ import (
 func main() {
 	stripe.Key = os.Getenv("STRIPE_ACCOUNT_SECRET_KEY")
 
-	customerID := os.Getenv("STRIPE_CUSTOMER_ID")
-	if customerID == "" {
-		fmt.Println("Please set STRIPE_CUSTOMER_ID for this request.")
-	}
-	listCustomerCards(customerID)
+	// customerID := os.Getenv("STRIPE_CUSTOMER_ID")
+	// if customerID == "" {
+	// 	fmt.Println("Please set STRIPE_CUSTOMER_ID for this request.")
+	// }
+	// listCustomerCards(customerID)
+
+	detachPaymentMethod()
 }
 
 func listCustomerCards(customerID string) {
@@ -33,4 +35,13 @@ func listCustomerCards(customerID string) {
 
 		fmt.Println(utils.MarshalIndent(pm))
 	}
+}
+
+func detachPaymentMethod() {
+	paymentMethodID := os.Getenv("STRIPE_PAYMENT_METHOD_ID")
+
+	pm, _ := paymentmethod.Detach(
+		paymentMethodID, nil)
+
+	fmt.Println(utils.MarshalIndent(pm))
 }
