@@ -70,9 +70,29 @@ func separateTransferWithSourceTransaction() {
 	fmt.Println(secondTransfer)
 }
 
+// Use metadat in Transfer
+func applyMetadataInTransfer() {
+	sourceTransaction := os.Getenv("SOURCE_TRANSACTION")
+
+	transferParams := &stripe.TransferParams{
+		Params: stripe.Params{
+			Metadata: map[string]string{
+				"payment_item_ids": "[1, 2, 3]",
+			},
+		},
+		Amount:            stripe.Int64(100),
+		Currency:          stripe.String(string(stripe.CurrencyGBP)),
+		SourceTransaction: stripe.String(sourceTransaction),
+		Destination:       stripe.String(os.Getenv("CONNECTED_ACCOUNT_ID")),
+	}
+
+	myTransfer, _ := transfer.New(transferParams)
+	fmt.Println(myTransfer)
+}
+
 func main() {
 
 	stripe.Key = os.Getenv("STRIPE_ACCOUNT_SECRET_KEY")
 
-	separateTransferWithTransferGroup()
+	applyMetadataInTransfer()
 }

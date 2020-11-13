@@ -1,8 +1,8 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"go_record/16_stripe/utils"
 	"os"
 
 	"github.com/stripe/stripe-go"
@@ -15,6 +15,5 @@ func main() {
 	accountID := os.Args[1]
 	a, _ := account.GetByID(accountID, nil)
 
-	out, _ := json.MarshalIndent(a, "", "  ")
-	fmt.Println(string(out))
+	fmt.Println(utils.MarshalIndent(a))
 }

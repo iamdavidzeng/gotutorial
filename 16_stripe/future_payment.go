@@ -10,13 +10,13 @@ import (
 
 func main() {
 
-	stripe.Key = os.Getenv("STRIPE_SECRET_KEY")
+	stripe.Key = os.Getenv("STRIPE_ACCOUNT_SECRET_KEY")
 
 	params := &stripe.PaymentIntentParams{
-		Amount:        stripe.Int64(1100),
-		Currency:      stripe.String(string(stripe.CurrencyAUD)),
-		Customer:      stripe.String(os.Getenv("CUSTOMER")),
-		PaymentMethod: stripe.String(os.Getenv("PAYMENT_METHOD")),
+		Amount:        stripe.Int64(1000),
+		Currency:      stripe.String(string(stripe.CurrencyGBP)),
+		Customer:      stripe.String(os.Getenv("STRIPE_CUSTOMER_ID")),
+		PaymentMethod: stripe.String(os.Getenv("STRIPE_PAYMENT_METHOD")),
 		Confirm:       stripe.Bool(true),
 		OffSession:    stripe.Bool(true),
 	}
