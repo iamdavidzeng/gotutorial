@@ -2,14 +2,15 @@ package main
 
 import "fmt"
 
-func rotate(nums []int, k int) []int {
-	i := len(nums) - k
-	nums = append(nums[i:], nums[:i]...)
-	return nums
+func rotate(nums []int, k int) {
+	k = k % len(nums)
+	copy(nums, append(nums[len(nums)-k:], nums[:len(nums)-k]...))
 }
 
 func main() {
-	nums := []int{1, 2, 3, 4, 5, 6, 7}
+	nums := []int{1}
 
-	fmt.Println(rotate(nums, 3))
+	rotate(nums, 2)
+
+	fmt.Println(nums)
 }
