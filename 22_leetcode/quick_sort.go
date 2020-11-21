@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func quickSort(nums []int) []int {
 	if len(nums) <= 1 {
@@ -18,10 +20,7 @@ func quickSort(nums []int) []int {
 			}
 		}
 
-		result := append(quickSort(less), pivot)
-		result = append(result, quickSort(greater)...)
-
-		return result
+		return append(append(quickSort(less), pivot), quickSort(greater)...)
 	}
 }
 
