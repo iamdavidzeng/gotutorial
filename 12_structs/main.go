@@ -66,7 +66,7 @@ func main() {
 	}
 
 	fmt.Println("person2 use attribute directly: " + person2.firstName)
-	fmt.Printf("person2's typeL %T\n", person2)
+	fmt.Printf("person2's type: %T\n", person2)
 	fmt.Printf("person2 memory address is: %p\n", person2)
 	pointerReceiver(person2)
 }

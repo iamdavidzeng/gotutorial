@@ -5,13 +5,13 @@ import (
 	"fmt"
 )
 
-type Person struct {
+type NewPerson struct {
 	Name   string `json:"name"`
 	Gender string `json:"gender"`
 }
 
 func main() {
-	david := &Person{
+	david := &NewPerson{
 		Name:   "david",
 		Gender: "male",
 	}
