@@ -1,8 +1,9 @@
-package go_db
+package main
 
 import (
 	"database/sql"
 	"fmt"
+
 	_ "github.com/go-sql-driver/mysql" //hahah
 )
 
