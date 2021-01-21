@@ -1,3 +1,3 @@
-# go_record
+# github.com/iamdavidzeng/gotutorial
 
 Golang coding...

@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"go_record/16_stripe/utils"
 	"os"
+
+	"github.com/iamdavidzeng/gotutorial/16_stripe/utils"
 
 	stripe "github.com/stripe/stripe-go"
 	"github.com/stripe/stripe-go/customer"

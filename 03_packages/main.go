@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go_record/03_packages/utils"
+
+	"github.com/iamdavidzeng/gotutorial/03_packages/utils"
 )
 
 func main() {
