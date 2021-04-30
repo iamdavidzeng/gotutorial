@@ -4,6 +4,7 @@ import "math"
 
 var Pi float64
 
-func init() {
+func Init() float64 {
 	Pi = 4 * math.Atan(1)
+	return Pi
 }
