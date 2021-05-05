@@ -1,4 +1,4 @@
-package gopractice
+package trans
 
 import "math"
 
