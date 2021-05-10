@@ -1,3 +1,4 @@
 # github.com/iamdavidzeng/gotutorial
 
-Golang coding...
+TODO:
+    Golang tutorial
