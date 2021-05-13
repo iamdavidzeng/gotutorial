@@ -40,6 +40,11 @@ func main() {
 	fmt.Println(config)
 }
 
+func replace(body []byte) []byte {
+	compiler := regexp.MustCompile(`\$\{([^}:]+):?([^}]+)?\}`)
+
+}
+
 func replaceEnvInConfig(body []byte) []byte {
 	search := regexp.MustCompile(`\$\{([^}:]+):?([^}]+)?\}`)
 	replacedBody := search.ReplaceAllFunc(body, func(b []byte) []byte {
