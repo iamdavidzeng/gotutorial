@@ -12,6 +12,8 @@ type DatabaseCfg struct {
 	Address string `mapstructure:"DB_URL"`
 }
 
+var config DatabaseCfg
+
 func main() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
@@ -23,12 +25,9 @@ func main() {
 	}
 
 	for _, key := range viper.AllKeys() {
-		value := viper.GetString(key)
-		envOrRaw := replace(value)
-		viper.Set(key, envOrRaw)
+		viper.Set(key, replace(viper.GetString(key)))
 	}
 
-	var config DatabaseCfg
 	if err := viper.Unmarshal(&config); err != nil {
 		panic(fmt.Errorf("failed to load"))
 	}
@@ -39,7 +38,6 @@ func main() {
 func replace(s string) string {
 	compiler := regexp.MustCompile(`\$\{([^}:]+):?([^}]+)?\}`)
 	value := compiler.ReplaceAllFunc([]byte(s), func(b []byte) []byte {
-
 		match := compiler.FindStringSubmatch(string(b))
 		fmt.Println(match)
 
