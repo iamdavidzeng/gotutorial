@@ -8,31 +8,36 @@ import (
 	"os"
 )
 
-func post(addr string, c chan<- bool) error {
+func post(addr string) *http.Response {
 	body, _ := json.Marshal(map[string]string{"name": "david"})
 
 	resp, err := http.Post(addr, "application/json", bytes.NewBuffer(body))
 	if err != nil {
-		return err
+		panic(fmt.Errorf("err: %s", err))
 	}
-	fmt.Println(resp)
 
-	c <- true
-
-	return nil
+	return resp
 }
 
 func main() {
 
 	addrs := os.Args[1:]
 
-	c := make(chan bool)
+	c := make(chan *http.Response, len(addrs))
+	quit := make(chan struct{})
 
 	for _, addr := range addrs {
 		go func(addr string) {
-			post(addr, c)
+			c <- post(addr)
 		}(addr)
 	}
 
-	<-c
+	go func() {
+		for i := 0; i < len(addrs); i++ {
+			fmt.Println(<-c)
+		}
+		close(quit)
+	}()
+
+	<-quit
 }
