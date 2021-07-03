@@ -16,16 +16,19 @@ func (h *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	a, _ := json.Marshal(result)
 	fmt.Println(string(a))
-	fmt.Fprintf(w, "Hello, World!")
+
+	response, _ := json.Marshal("hello, world!")
+
+	fmt.Fprintf(w, string(response))
 }
 
 func main() {
 	handler := MyHandler{}
 
 	server := http.Server{
-		Addr:    "127.0.0.1:8080",
+		Addr:    "127.0.0.1:8081",
 		Handler: &handler,
 	}
-	fmt.Println("Server is listening on http://localhost:8080")
+	fmt.Println("Server is listening on http://localhost:8081")
 	server.ListenAndServe()
 }

@@ -5,8 +5,8 @@ import "fmt"
 func main() {
 	// array
 	ids := []int{11, 22, 33, 44}
-	for _, i := range ids {
-		fmt.Println(i)
+	for i, v := range ids {
+		fmt.Println(i, v)
 	}
 
 	// map

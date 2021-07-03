@@ -8,12 +8,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-type DBCfg struct {
-	DBURI    string `mapstructure:"DB_URI"`
-	DBServer struct {
-		URI string `mapstructure:"URI"`
-	} `mapstructure:"DB"`
+type DatabaseCfg struct {
+	Address string `mapstructure:"DB_URL"`
 }
+
+var config DatabaseCfg
 
 func main() {
 	viper.SetConfigName("config")
@@ -26,13 +25,9 @@ func main() {
 	}
 
 	for _, key := range viper.AllKeys() {
-		fmt.Println(key)
-		value := viper.GetString(key)
-		envOrRaw := replaceEnvInConfig([]byte(value))
-		viper.Set(key, string(envOrRaw))
+		viper.Set(key, replace(viper.GetString(key)))
 	}
 
-	var config DBCfg
 	if err := viper.Unmarshal(&config); err != nil {
 		panic(fmt.Errorf("failed to load"))
 	}
@@ -40,18 +35,20 @@ func main() {
 	fmt.Println(config)
 }
 
-func replaceEnvInConfig(body []byte) []byte {
-	search := regexp.MustCompile(`\$\{([^}:]+):?([^}]+)?\}`)
-	replacedBody := search.ReplaceAllFunc(body, func(b []byte) []byte {
-		group1 := search.ReplaceAllString(string(b), `$1`)
-		group2 := search.ReplaceAllString(string(b), `$2`)
+func replace(s string) string {
+	compiler := regexp.MustCompile(`\$\{([^}:]+):?([^}]+)?\}`)
+	value := compiler.ReplaceAllFunc([]byte(s), func(b []byte) []byte {
+		match := compiler.FindStringSubmatch(string(b))
+		fmt.Println(match)
 
-		envValue := os.Getenv(group1)
-		if len(envValue) > 0 {
+		envValue := os.Getenv(match[1])
+		defaultValue := match[2]
+
+		if len([]byte(envValue)) > 0 {
 			return []byte(envValue)
 		}
-		return []byte(group2)
+		return []byte(defaultValue)
 	})
 
-	return replacedBody
+	return string(value)
 }
