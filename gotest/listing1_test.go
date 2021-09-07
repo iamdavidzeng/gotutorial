@@ -1,4 +1,4 @@
-package listing1
+package gotest
 
 import (
 	"fmt"

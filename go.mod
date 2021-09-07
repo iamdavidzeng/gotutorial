@@ -3,6 +3,7 @@ module github.com/iamdavidzeng/gotutorial
 go 1.16
 
 require (
+	github.com/asim/go-micro/v3 v3.6.0
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/iamdavidzeng/gonamekoclient v0.0.1-beta
