@@ -1,4 +1,4 @@
-package utils
+package algorithm
 
 func IsUgly(num int) bool {
 

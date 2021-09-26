@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package algorithm
 
 func maxProfit(prices []int) int {
 	minPriceIndex := 0
@@ -21,9 +19,4 @@ func maxProfit(prices []int) int {
 		}
 	}
 	return profit
-}
-
-func main() {
-	prices := []int{7, 6, 5, 4, 3, 1, 2}
-	fmt.Println(maxProfit(prices))
 }

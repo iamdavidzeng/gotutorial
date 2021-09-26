@@ -1,4 +1,4 @@
-package utils
+package algorithm
 
 func IntReverse(target int) int {
 	y := 0

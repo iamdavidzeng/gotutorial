@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package algorithm
 
 func searchRange(nums []int, target int) []int {
 	if len(nums) < 0 {
@@ -45,11 +43,4 @@ func searchRange(nums []int, target int) []int {
 	}
 
 	return result
-}
-
-func main() {
-
-	nums := []int{5, 7, 7, 8, 8, 10}
-
-	fmt.Println(searchRange(nums, 8))
 }

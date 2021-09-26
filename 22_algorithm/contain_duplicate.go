@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package algorithm
 
 func containsDuplicate(nums []int) bool {
 
@@ -12,9 +10,4 @@ func containsDuplicate(nums []int) bool {
 		}
 	}
 	return false
-}
-
-func main() {
-	nums := []int{1, 1, 1, 3, 3, 4, 3, 2, 4, 2}
-	fmt.Println(containsDuplicate(nums))
 }

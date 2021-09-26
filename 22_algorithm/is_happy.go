@@ -1,4 +1,4 @@
-package utils
+package algorithm
 
 func IsHappy(n int) bool {
 	history := make(map[int]bool)

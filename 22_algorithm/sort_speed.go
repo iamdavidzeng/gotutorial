@@ -1,4 +1,4 @@
-package main
+package algorithm
 
 import (
 	"fmt"
@@ -27,8 +27,4 @@ func bubbleSort(arr *[]int) {
 			}
 		}
 	}
-}
-
-func main() {
-	Sort()
 }

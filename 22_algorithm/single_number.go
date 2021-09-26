@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package algorithm
 
 func singleNumber(nums []int) int {
 	number := 0
@@ -19,9 +17,4 @@ func singleNumber1(nums []int) int {
 		single ^= num
 	}
 	return single
-}
-
-func main() {
-	nums := []int{1, 2, 1, 2, 4}
-	fmt.Println(singleNumber1(nums))
 }

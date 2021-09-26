@@ -1,4 +1,4 @@
-package utils
+package algorithm
 
 func TwoSum(nums []int, target int) []int {
 	res := make([]int, 2)

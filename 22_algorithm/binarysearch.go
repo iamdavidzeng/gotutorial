@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package algorithm
 
 /*
 使用缩小搜索空间的方式来解决搜索：
@@ -29,10 +27,4 @@ func search(nums []int, target int) int {
 		}
 	}
 	return -1
-}
-
-func main() {
-	nums := []int{-1, 0, 3, 5, 9, 12}
-
-	fmt.Println(search(nums, 9))
 }

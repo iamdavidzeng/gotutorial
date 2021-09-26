@@ -1,10 +1,6 @@
-package main
+package algorithm
 
-import (
-	"fmt"
-)
-
-func quickSort(nums []int) []int {
+func QuickSort(nums []int) []int {
 	if len(nums) <= 1 {
 		return nums
 	} else {
@@ -19,12 +15,6 @@ func quickSort(nums []int) []int {
 				greater = append(greater, value)
 			}
 		}
-
-		return append(append(quickSort(less), pivot), quickSort(greater)...)
+		return append(append(QuickSort(less), pivot), QuickSort(greater)...)
 	}
-}
-
-func main() {
-	nums := []int{5, 2, 21, 4, 1}
-	fmt.Println(quickSort(nums))
 }

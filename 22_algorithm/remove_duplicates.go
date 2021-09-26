@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package algorithm
 
 func removeDuplicates(nums []int) int {
 
@@ -14,12 +12,4 @@ func removeDuplicates(nums []int) int {
 	}
 
 	return len(nums)
-}
-
-func main() {
-
-	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
-
-	fmt.Println(removeDuplicates(nums))
-
 }

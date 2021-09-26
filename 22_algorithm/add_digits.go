@@ -1,4 +1,4 @@
-package utils
+package algorithm
 
 func AddDigits(num int) int {
 	if num < 10 {
