@@ -10,9 +10,9 @@ package algorithm
 */
 func SelectionSort(lst []int) []int {
 	length := len(lst)
-	for i := 0; i < length; i++ {
+	for i := 0; i < length-1; i++ {
 		pivot := i
-		for j := i; j < length; j++ {
+		for j := i + 1; j < length; j++ {
 			if lst[pivot] > lst[j] {
 				pivot = j
 			}
