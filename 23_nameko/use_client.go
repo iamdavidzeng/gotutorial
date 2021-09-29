@@ -3,25 +3,24 @@ package main
 import (
 	"fmt"
 
-	"github.com/iamdavidzeng/gonamekoclient"
+	"github.com/iamdavidzeng/gonameko"
 )
 
 func main() {
-	namekorpc := gonamekoclient.Client{
+	namekoclient := gonameko.Client{
 		RabbitHostname: "localhost",
 		RabbitUser:     "guest",
 		RabbitPass:     "guest",
 		RabbitPort:     5672,
-		ContentType:    "application/json",
+		ContentType:    "application/xjson",
 	}
+	namekoclient.Setup()
 
-	namekorpc.Init()
-
-	response, err := namekorpc.Call(
-		gonamekoclient.RPCRequestParam{
-			Service:  "articles",
+	response, err := namekoclient.Call(
+		gonameko.RPCRequestParam{
+			Service:  "properties",
 			Function: "health_check",
-			Payload: gonamekoclient.RPCPayload{
+			Payload: gonameko.RPCPayload{
 				Args:   []string{},
 				Kwargs: map[string]string{},
 			},
