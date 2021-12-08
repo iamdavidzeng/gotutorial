@@ -28,8 +28,8 @@ func NewHub() *Hub {
 }
 
 var (
-	messages = []Message{}
-	group    = Group{name: "test group"}
+	// messages = []Message{}
+	group = Group{name: "test group"}
 )
 
 func (h *Hub) Run() {
@@ -54,11 +54,11 @@ func (h *Hub) Run() {
 			}
 
 			// Retrive the old messages for current client.
-			for _, message := range messages {
-				if message.To == client.name {
-					client.send <- message
-				}
-			}
+			// for _, message := range messages {
+			// 	if message.To == client.name {
+			// 		client.send <- message
+			// 	}
+			// }
 		case client := <-h.unregister:
 			if _, ok := h.clients[client.name]; ok {
 				delete(h.clients, client.name)

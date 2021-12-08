@@ -115,8 +115,13 @@ func (c *Client) writePump() {
 			if err != nil {
 				return
 			}
-			w.Write([]byte(message.Content))
-			messages = append(messages, message)
+			serializedMessage, err := json.Marshal(message)
+			if err != nil {
+				log.Printf("error: %v", err)
+				return
+			}
+			w.Write(serializedMessage)
+			// messages = append(messages, message)
 
 			if err := w.Close(); err != nil {
 				return
@@ -132,14 +137,29 @@ func (c *Client) writePump() {
 
 // serveWs handles websocket requests from the peer.
 func ServeWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
+	// allow local development cors to work temporarily.
+	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
+
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(err)
 		return
 	}
 	log.Println(r.Header)
+	userInfo, err := r.Cookie("user")
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	var name string
+	if len(r.Header.Get("User")) > 0 {
+		name = r.Header.Get("User")
+	} else {
+		name = userInfo.Value
+	}
 	client := &Client{
-		name: r.Header.Get("User"),
+		name: name,
 		hub:  hub,
 		conn: conn,
 		send: make(chan Message, 256),
