@@ -92,3 +92,11 @@ func (h *Hub) Run() {
 		}
 	}
 }
+
+func (h *Hub) GetUsers() []string {
+	users := []string{}
+	for _, client := range h.clients {
+		users = append(users, client.name)
+	}
+	return users
+}

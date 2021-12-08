@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"log"
 	"net/http"
@@ -25,6 +26,15 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "home.html")
 }
 
+func listUsers(hub *chat.Hub, w http.ResponseWriter, r *http.Request) {
+	users := hub.GetUsers()
+
+	userList, _ := json.Marshal(users)
+
+	w.Header().Add("Access-Control-Allow-Origin", "http://localhost:3000")
+	w.Write(userList)
+}
+
 func main() {
 	flag.Parse()
 	hub := chat.NewHub()
@@ -32,6 +42,9 @@ func main() {
 	http.HandleFunc("/", serveHome)
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		chat.ServeWs(hub, w, r)
+	})
+	http.HandleFunc("/api/users", func(w http.ResponseWriter, r *http.Request) {
+		listUsers(hub, w, r)
 	})
 	log.Println("Server is running on port:", *addr)
 	err := http.ListenAndServe(*addr, nil)
