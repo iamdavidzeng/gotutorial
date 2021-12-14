@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func coinChange(coins []int, amount int) int {
@@ -38,18 +39,23 @@ func change(memo map[int]int, coins []int, amount int) int {
 }
 
 func coinChangeWithDP(coins []int, amount int) int {
-	return dp(coins, amount)
+	return dpChange(coins, amount)
 }
 
-func dp(coins []int, amount int) int {
+func dpChange(coins []int, amount int) int {
 	dp := map[int]int{0: 0}
-	for i := 0; i <= amount; i++ {
+	for i := 1; i < amount+1; i++ {
+		dp[i] = math.MaxInt32
 		for _, coin := range coins {
 			if i-coin < 0 {
 				continue
+			} else if dp[i] > dp[i-coin]+1 {
+				dp[i] = dp[i-coin] + 1
 			}
-			dp[i] = min(dp[i], 1+dp[i-coin])
 		}
+	}
+	if dp[amount] == math.MaxInt32 {
+		return -1
 	}
 	return dp[amount]
 }
@@ -62,5 +68,5 @@ func min(a, b int) int {
 }
 
 func main() {
-	fmt.Println(coinChangeWithDP([]int{1, 2, 5}, 11))
+	fmt.Println(coinChangeWithDP([]int{2}, 3))
 }
