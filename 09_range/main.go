@@ -9,6 +9,12 @@ func main() {
 		fmt.Println(i, v)
 	}
 
+	// slice
+	newIds := ids[:len(ids)-1]
+	for i, v := range newIds {
+		fmt.Println(i, v)
+	}
+
 	// map
 	emails := map[string]string{
 		"David": "david@gmail.com",

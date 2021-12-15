@@ -2,35 +2,46 @@ package main
 
 import "fmt"
 
-var res = [][]int{}
-
 func permute(nums []int) [][]int {
+	res := [][]int{}
+
+	var helper func(nums []int, track []int)
+	helper = func(nums []int, track []int) {
+		if len(nums) == len(track) {
+			tmp := make([]int, len(track))
+			copy(tmp, track)
+			res = append(res, tmp)
+			return
+		}
+
+		for i := 0; i < len(nums); i++ {
+			if contains(track, nums[i]) {
+				continue
+			}
+
+			track = append(track, nums[i])
+
+			helper(nums, track)
+
+			track = track[:len(track)-1]
+		}
+	}
+
 	track := []int{}
 	helper(nums, track)
 	return res
+
 }
 
-func helper(nums []int, track []int) {
-	if len(nums) == len(track) {
-		res = append(res, track)
-		return
-	}
-
-	for i := 0; i < len(nums); i++ {
-		for _, value := range track {
-			if nums[i] == value {
-				continue
-			}
+func contains(lst []int, value int) bool {
+	for _, v := range lst {
+		if v == value {
+			return true
 		}
-
-		track = append(track, nums[i])
-
-		helper(nums, track)
-
-		track = track[:len(track)-1]
 	}
+	return false
 }
 
 func main() {
-	fmt.Println(permute([]int{1, 2, 3}))
+	fmt.Println(permute([]int{5, 4, 6, 2}))
 }
