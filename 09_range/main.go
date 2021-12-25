@@ -3,6 +3,12 @@ package main
 import "fmt"
 
 func main() {
+	// string
+	str := "david"
+	for i, v := range str {
+		fmt.Println(i, string(v))
+	}
+
 	// array
 	ids := []int{11, 22, 33, 44}
 	for i, v := range ids {
