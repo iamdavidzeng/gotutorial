@@ -33,11 +33,13 @@ func traverseTree(root *TreeNode) *TreeNode {
 		return root
 	}
 	// 前序
+	// fmt.Println("前序遍历:", root.Val)
 	traverseTree(root.Left)
 	// 中序
+	// fmt.Println("中序遍历:", root.Val)
 	traverseTree(root.Right)
 	// 后序
-	fmt.Println("tree after:", root.Val)
+	fmt.Println("后序遍历:", root.Val)
 
 	return nil
 }
@@ -91,6 +93,12 @@ func main() {
 		Val: 1,
 		Left: &TreeNode{
 			Val: 2,
+			Left: &TreeNode{
+				Val: 4,
+			},
+			Right: &TreeNode{
+				Val: 5,
+			},
 		},
 		Right: &TreeNode{
 			Val: 3,
