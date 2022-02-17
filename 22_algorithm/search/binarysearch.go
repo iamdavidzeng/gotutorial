@@ -1,4 +1,4 @@
-package algorithm
+package main
 
 /*
 使用缩小搜索空间的方式来解决搜索：

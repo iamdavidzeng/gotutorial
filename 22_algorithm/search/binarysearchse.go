@@ -1,4 +1,4 @@
-package algorithm
+package main
 
 func searchRange(nums []int, target int) []int {
 	if len(nums) < 0 {

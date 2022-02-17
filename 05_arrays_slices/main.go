@@ -25,4 +25,7 @@ func main() {
 	fmt.Println(len(fruitArr2))
 	fmt.Println(fruitArr2[:4])
 
+	fruitArr3 := [4]int{}
+	fruitArr3[0] = 1
+	fmt.Println(fruitArr3)
 }
