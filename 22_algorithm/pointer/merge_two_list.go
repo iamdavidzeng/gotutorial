@@ -49,4 +49,6 @@ func main() {
 	}
 
 	mergeTwoLists(list1, list2)
+
+	mergeTwoLists1(list1, list2)
 }
