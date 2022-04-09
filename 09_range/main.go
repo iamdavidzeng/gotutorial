@@ -73,6 +73,12 @@ func main() {
 		fmt.Println(k, v)
 	}
 
+	v := emails["123"]
+	fmt.Println(v)
+
+	key := fmt.Sprintf("%v", []int{1, 2, 3})
+	fmt.Println(key)
+
 	// link table iteration
 	linkTable := &ListNode{
 		Val: 1,

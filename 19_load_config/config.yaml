@@ -1,1 +1,4 @@
 DB_URL: ${DB_USER:localhost}:${DB_PASSWORD:}/@tcp(${DB_SERVER:127.0.0.1}:${DB_PORT:3306})/${DB_NAME:demo})
+
+DB:
+  USER: ${DB_USER:localhost}

@@ -22,7 +22,7 @@ func change(memo map[int]int, coins []int, amount int) int {
 	if value, ok := memo[amount]; ok {
 		return value
 	}
-	counter := 65535
+	counter := math.MaxInt32
 	for _, coin := range coins {
 		result := change(memo, coins, amount-coin)
 		if result == -1 {
@@ -30,7 +30,7 @@ func change(memo map[int]int, coins []int, amount int) int {
 		}
 		counter = min(counter, result+1)
 	}
-	if counter == 65535 {
+	if counter == math.MaxInt32 {
 		memo[amount] = -1
 		return -1
 	}

@@ -13,4 +13,6 @@ func main() {
 	// Declare map and assign value
 	emails := map[string]string{"David": "david.gmail.com", "Bob": "bob@gmail.com"}
 	fmt.Println(emails)
+
+	fmt.Println(len(map[string]int{"a": 2}))
 }

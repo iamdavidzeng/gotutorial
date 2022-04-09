@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 // 自顶向下
@@ -51,7 +50,7 @@ func lcs(s1, s2 string) int {
 }
 
 func max(a ...int) int {
-	res := math.MinInt32
+	res := a[0]
 	for _, v := range a {
 		if v > res {
 			res = v

@@ -8,8 +8,12 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-type DatabaseCfg struct {
-	Address string `yaml:"DB_URL"`
+type Cfg struct {
+	DB DBCfg `yaml:"DB"`
+}
+
+type DBCfg struct {
+	User string `yaml:"USER"`
 }
 
 func main() {
@@ -28,7 +32,7 @@ func main() {
 
 	buffer := replaceEnvInConfig(stream[:count])
 
-	var cfg DatabaseCfg
+	var cfg Cfg
 	if err := yaml.Unmarshal(buffer, &cfg); err != nil {
 		panic(fmt.Errorf("failed to load"))
 	}
